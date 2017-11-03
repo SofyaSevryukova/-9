@@ -1,0 +1,7 @@
+<a href="{% url 'todolist:list-detail' list_id=list_id %}">Перейти к такслисту</a>
+<h1>Details of {{ task_details.name }}</h1>
+{% for key, value in task_details.items %}
+<p>{{ key }} – {{ value }}</p>
+{% endfor %}
+<a href="/todolists/{{ task_details.tasklist }}/tasks/{{ task_details.id }}/delete/">Удалить этот task</a>
+<a href="{% url 'todolist:task-detail-update' list_id=list_id pk=task_details.id %}">Обновить этот task</a>

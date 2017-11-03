@@ -1,0 +1,6 @@
+<h1>С вами поделились задачами:</h1>
+{% for task in tasks %}
+    {% for key, value in task.items %}
+        <p>{{ key }} – {{ value }}</p>
+    {% endfor %}
+{% endfor %}

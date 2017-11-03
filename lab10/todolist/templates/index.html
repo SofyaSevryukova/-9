@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>To-do lists</h1>
+    {% if not todolists.detail %}
+    <ul>
+        {% for todolist in todolists %}
+            <li>
+                name: <a href="/todolists/{{ todolist.id }}/">{{ todolist.name }}</a>
+                <a href="/todolists/{{ todolist.id }}/delete/">Удалить</a>
+                <a href="/todolists/{{ todolist.id }}/update/">Изменить</a>
+{#       not necessary         <div>owner: {{ todolist.owner }}</div>#}
+            </li>
+        {% endfor %}
+    </ul>
+    {% elif todolists.detail %}
+        <p>{{ todolists.detail }}</p>
+    {% endif %}
+    <a href="{% url 'todolist:create_todolist' %}">Create new!</a>
+    {% if not session.token %}
+        <a href="{% url 'login' %}">Login!</a>
+    {% else %}
+        <a href="{% url 'todolist:shared-tasks' %}">Shared tasks</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+</body>
+</html>

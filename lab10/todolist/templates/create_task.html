@@ -1,0 +1,6 @@
+<a href="{% url 'todolist:list-detail' list_id=list_id %}">Вернуться к списку задач</a>
+<form action="{% url 'todolist:create_task' list_id=list_id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>

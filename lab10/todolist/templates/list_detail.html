@@ -1,0 +1,10 @@
+<a href="{% url 'todolist:index' %}">На главную</a>
+<h1>List details of: {{ list_details.name }}</h1>
+<p>ID: {{ list_details.id }}</p>
+<p>Владелец: {{ list_details.owner }}</p>
+<p>Таски:
+    {% for task in list_details.tasks %}
+        <a href="/todolists/{{ list_details.id }}/tasks/{{ task }}">{{ task }}</a>
+    {% endfor %}
+</p>
+<a href="{% url 'todolist:create_task' list_id=list_details.id %}">Добавить новый таск</a>
